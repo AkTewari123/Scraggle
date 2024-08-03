@@ -1,8 +1,5 @@
-
-# Scraggle
-
-### Welcome to Scraggle!
-## This project scrambled a sentence by translating it through numerous languages!
+# Welcome to Scraggle!
+## This project scrambles a sentence by translating it through numerous languages!
 ## Dev dependencies:
 
 ### pip3 install googletrans==3.1.0a0
@@ -16,4 +13,4 @@
 
 ## Have fun!
 
-## Please give me (Akshat Tewari or Messef) credit for the code 🙏
+## Please give me (Akshat Tewari or AkTewari123) credit for the code 🙏
