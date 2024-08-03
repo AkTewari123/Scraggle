@@ -49,6 +49,7 @@
 <script>
             // Intercept the form submission
             document.getElementById('dataForm').addEventListener('submit', function(event) {
+              
               document.getElementById('pythonData').innerHTML = `<br/>Loading Response ...`;
         event.preventDefault(); // Prevent the default form submission
          const elements = document.querySelectorAll('.incoming');
@@ -68,6 +69,10 @@
         })
         .then(response => response.json())
         .then(data => {
+          if (data.error) {
+                document.getElementById('pythonData').innerHTML = `<br/>Sorry, we the server timed out, try decreasing the # of scramble times`;
+                console.log("schlong")
+              }
           async function myLoop() {
           let  i=0
           while (i<data.scrambled_output.length) {

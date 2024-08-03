@@ -2,7 +2,7 @@
 # Scraggle
 
 ### Welcome to Scraggle!
-
+## This project scrambled a sentence by translating it through numerous languages!
 ## Dev dependencies:
 
 ### pip3 install googletrans==3.1.0a0

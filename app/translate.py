@@ -4,6 +4,7 @@ from googletrans import Translator
 import time
 from pprint import pprint
 # Gets things lost in translation
+print(list(googletrans.LANGUAGES.keys()))
 translator = Translator()
 def scraggle(z: int, txt: str):
     if z < 2:
@@ -12,7 +13,7 @@ def scraggle(z: int, txt: str):
         z = 20
     retArray = []
     languages = []
-    offLimits = ["en", "zh-CN"]
+    offLimits = ["en", "zh-cn", "zh-tw"]
     language = random.choice(list(googletrans.LANGUAGES.keys()))
     offLimits.append(language)
     try:
@@ -38,7 +39,7 @@ def scraggle(z: int, txt: str):
     retArray.append(item)
     for i in range(z-1):
         language = random.choice(list(googletrans.LANGUAGES.keys()))
-        while language in offLimits or language == 'zh-CN' or language == "chinese (simplified)"or language not in googletrans.LANGUAGES.keys() or language == 'zh-TW':
+        while language in offLimits or language == "chinese (simplified)"or language not in googletrans.LANGUAGES.keys():
             language = random.choice(list(googletrans.LANGUAGES.keys()))
         offLimits.append(language)
         try: 
@@ -63,7 +64,6 @@ def scraggle(z: int, txt: str):
     except KeyError:
         og = "Chinese"
     x = translator.translate(x.text, dest="en")
-    print("GOT HERE")
     item = f"{og} -> English<br/>"
     languages.append(item)
 
@@ -77,7 +77,3 @@ def scraggle(z: int, txt: str):
     retArray.append(item)
     return retArray, languages
 
-if __name__ == "__main__":
-    """ print(scraggle("Remy has great white toes", 25)) # increase this number   """
-    for x in scraggle(4, "New Magic Wand"):
-        print(x)

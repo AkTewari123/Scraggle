@@ -5,6 +5,9 @@ import requests
 import sys
 import json
 import ast
+from socket import error as SocketError
+import errno
+
 @app.route("/")
 def index():
     return render_template("main.html")
@@ -13,8 +16,13 @@ def index():
 def scrambleConf():
     times = int(request.form['times'])
     text = request.form['toScramble']
-    output_str, langs = translate.scraggle(times, text)
-
+    error = False
+    try: 
+        output_str, langs = translate.scraggle(times, text)
+        raise SocketError
+    except SocketError as e:
+        error = True # Handle error here.
+        print('gyatt')
     # Combine the results into a string or any other format you prefer
     print(output_str)
     print(langs)
@@ -22,6 +30,7 @@ def scrambleConf():
     return jsonify({
         "original_text": text,
         "scrambled_output": output_str,
-        "langs": langs
+        "langs": langs, 
+        "status": error
     })
 
