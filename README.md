@@ -2,10 +2,11 @@
 ## This project scrambles a sentence by translating it through numerous languages!
 ## Dev dependencies:
 
-### pip3 install googletrans==3.1.0a0
+- pip3 install googletrans==3.1.0a0
 
-### pip3 install flask
+- pip3 install flask
 
+- pip3 install sockets
   
 
 ## Run run.py
