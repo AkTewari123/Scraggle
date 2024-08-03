@@ -1,0 +1,77 @@
+#welcome {
+    color: white;
+    text-align: center;
+    font-size: 70px;
+}
+* {
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
+    background-color: #0B192F;
+
+}
+.answerBoxes  {
+    padding: .25em;
+    color: white;
+}
+#pythonData {
+    text-align: center;
+    font-size: 1.25rem;
+    color:white ;
+}
+::placeholder {
+    color: white;
+}
+.incoming {
+    font-size: 1.25rem;
+    color:white ;
+    border: 2px solid rgb(199, 199, 199);
+    border-left: none;
+    border-right: none;
+    padding: 15px 10px;
+    display: block;
+    text-align: center;
+    margin-right: 35%;
+    margin-left: 35%;
+    margin-top: none;
+}
+
+#submitInfo {
+    padding: .3em 1em;
+    color: black;
+    border-radius: 20px;
+    background: rgba(255, 255,255);
+    transition: 1s;
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    margin-left: 45%;
+    margin-top: 1%;
+
+
+}
+#submitInfo:hover {
+    background: rgba(237, 237, 237, 0.6);
+
+}
+.containerForAnswer {
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    border-color: white;
+}
+
+.answerBoxes {
+    font-size: 20px;
+    margin-left: 20px;
+    border: 20px 10px 5px 15px;
+    padding-left: 5px;
+    width: 500px;
+    height: 50px;
+    border-left-style: none;
+    border-top: none;
+    border-right-style: none;
+    border-color: white;
+    color: white;
+
+}
