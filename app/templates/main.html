@@ -48,75 +48,74 @@
 </body>
 <script>
             // Intercept the form submission
-            document.getElementById('dataForm').addEventListener('submit', function(event) {
-              
-              document.getElementById('pythonData').innerHTML = `<br/>Loading Response ...`;
-        event.preventDefault(); // Prevent the default form submission
-         const elements = document.querySelectorAll('.incoming');
+  document.getElementById("dataForm").addEventListener("submit", function (event) {
+    document.getElementById(
+      "pythonData"
+    ).innerHTML = `<br/>Loading Response ...`;
+    event.preventDefault(); // Prevent the default form submission
+    const elements = document.querySelectorAll(".incoming");
 
-          // Iterate over each element and remove it from the DOM
-          elements.forEach(element => {
-            element.remove();
-          }); 
+    // Iterate over each element and remove it from the DOM
+    elements.forEach((element) => {
+      element.remove();
+    });
 
-        const formData = new FormData(this);
-        function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-        fetch('/', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.error) {
-                document.getElementById('pythonData').innerHTML = `<br/>Sorry, we the server timed out, try decreasing the # of scramble times`;
-                console.log("schlong")
-              }
-          async function myLoop() {
-          let  i=0
-          while (i<data.scrambled_output.length) {
-          document.getElementById("pythonData").style.display= "none";
-          const info = document.createElement('p')
-          const lang = document.createElement('p')
-          info.className = 'incoming'
-          console.log("hello")
-          let text = i.toString()
-          // Display the result in the div with id 'pythonData'
-
-          info.style.opacity = '0';
-          info.innerHTML = `${data.scrambled_output[i]}<br/>`;
-          lang.innerHTML = `${data.langs[i]}`;
-          let z = i.toString();
-          info.id = z;
-          console.log("hello");
-          
-          
-          console.log("here")
-          info.style.transition = 'opacity 1s ease-in-out';
-
-          await delay(1500);
-          document.getElementById('broad').append(info)
-
-          // Apply the transition property to the element
-          console.log("hi")
-          // Use setTimeout to allow the browser to recognize the initial style
-          setTimeout(() => {
-          // Change the opacity to 1, triggering the transition
-          info.style.opacity = '1';
-          }, 0);
-          i++;
-        }
-        
-        document.getElementById('pythonData').innerText = 'All done!';
-      } 
-      myLoop();
-
+    const formData = new FormData(this);
+    function delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
     }
+    fetch("/", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          document.getElementById(
+            "pythonData"
+          ).innerHTML = `<br/>Sorry, we the server timed out, try decreasing the # of scramble times`;
+          console.log("schlong");
+        }
+        async function myLoop() {
+          let i = 0;
+          while (i < data.scrambled_output.length) {
+            document.getElementById("pythonData").style.display = "none";
+            const info = document.createElement("p");
+            const lang = document.createElement("p");
+            info.className = "incoming";
+            console.log("hello");
+            let text = i.toString();
+            // Display the result in the div with id 'pythonData'
 
-        
-      )
-        .catch(error => console.error('Error:', error));
-      });
+            info.style.opacity = "0";
+            info.innerHTML = `${data.scrambled_output[i]}<br/>`;
+            lang.innerHTML = `${data.langs[i]}`;
+            let z = i.toString();
+            info.id = z;
+            console.log("hello");
+
+            console.log("here");
+            info.style.transition = "opacity 1s ease-in-out";
+
+            await delay(1500);
+            document.getElementById("broad").append(info);
+
+            // Apply the transition property to the element
+            console.log("hi");
+            // Use setTimeout to allow the browser to recognize the initial style
+            setTimeout(() => {
+              // Change the opacity to 1, triggering the transition
+              info.style.opacity = "1";
+            }, 0);
+            i++;
+          }
+
+          document.getElementById("pythonData").innerText = "All done!";
+        }
+        myLoop();
+      })
+      .catch((error) => console.error("Error:", error));
+  });
+
 </script>
 </html>

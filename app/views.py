@@ -22,7 +22,6 @@ def scrambleConf():
         raise SocketError
     except SocketError as e:
         error = True # Handle error here.
-        print('gyatt')
     # Combine the results into a string or any other format you prefer
     print(output_str)
     print(langs)

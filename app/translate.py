@@ -3,13 +3,15 @@ import random
 from googletrans import Translator
 import time
 from pprint import pprint
+
 # Gets things lost in translation
-print(list(googletrans.LANGUAGES.keys()))
 translator = Translator()
+
+
 def scraggle(z: int, txt: str):
     if z < 2:
         z = 2
-    if z>20:
+    if z > 20:
         z = 20
     retArray = []
     languages = []
@@ -17,32 +19,36 @@ def scraggle(z: int, txt: str):
     language = random.choice(list(googletrans.LANGUAGES.keys()))
     offLimits.append(language)
     try:
-        x = translator.translate(txt, dest = language)
+        x = translator.translate(txt, dest=language)
         offLimits.append(language)
     except KeyError:
         print("Try different text")
         scraggle(z)
-    try: 
+    try:
         og = googletrans.LANGUAGES[translator.detect(x.text).lang].capitalize()
     except KeyError:
         language = random.choice(list(googletrans.LANGUAGES.keys()))
-        while language == 'zh-CN' or language == 'zh-TW':
+        while language == "zh-CN" or language == "zh-TW":
             language = random.choice(list(googletrans.LANGUAGES.keys()))
-        try: 
+        try:
             og = googletrans.LANGUAGES[translator.detect(x.text).lang].capitalize()
         except KeyError:
             language = random.choice(list(googletrans.LANGUAGES.keys()))
     src = googletrans.LANGUAGES[language].capitalize()
     item = f"\nEnglish -> {src}<br/>"
     languages.append(item)
-    item+=f"{x.origin} -> {x.text}\n"
+    item += f"{x.origin} -> {x.text}\n"
     retArray.append(item)
-    for i in range(z-1):
+    for i in range(z - 1):
         language = random.choice(list(googletrans.LANGUAGES.keys()))
-        while language in offLimits or language == "chinese (simplified)"or language not in googletrans.LANGUAGES.keys():
+        while (
+            language in offLimits
+            or language == "chinese (simplified)"
+            or language not in googletrans.LANGUAGES.keys()
+        ):
             language = random.choice(list(googletrans.LANGUAGES.keys()))
         offLimits.append(language)
-        try: 
+        try:
             og = googletrans.LANGUAGES[translator.detect(x.text).lang].capitalize()
         except KeyError:
             language = random.choice(list(googletrans.LANGUAGES.keys()))
@@ -53,13 +59,13 @@ def scraggle(z: int, txt: str):
         item = f"{og} -> {src}<br/>"
         languages.append(item)
 
-        #time.sleep(0.5)
-        item+=f"{x.origin} -> {x.text}<br/>"
+        # time.sleep(0.5)
+        item += f"{x.origin} -> {x.text}<br/>"
 
         engVer = translator.translate(x.text, dest="en")
-        item+=f"English version: {engVer.text}\n"
+        item += f"English version: {engVer.text}\n"
         retArray.append(item)
-    try: 
+    try:
         og = googletrans.LANGUAGES[translator.detect(x.text).lang].capitalize()
     except KeyError:
         og = "Chinese"
@@ -67,13 +73,11 @@ def scraggle(z: int, txt: str):
     item = f"{og} -> English<br/>"
     languages.append(item)
 
-    #time.sleep(0.5)
-    item+=f"{x.origin} -> {x.text}<br/>"
+    # time.sleep(0.5)
+    item += f"{x.origin} -> {x.text}<br/>"
     retArray.append(item)
 
-
-    #time.sleep(2)
-    item=f"\n\nOriginal: {txt}<br/>Scrambled: {x.text}\n"
+    # time.sleep(2)
+    item = f"\n\nOriginal: {txt}<br/>Scrambled: {x.text}\n"
     retArray.append(item)
     return retArray, languages
-
