@@ -21,8 +21,7 @@ def scrambleConf():
         output_str, langs = translate.scraggle(times, text)
         raise SocketError
     except SocketError as e:
-        error = True # Handle error here.
-    # Combine the results into a string or any other format you prefer
+        error = True 
     print(output_str)
     print(langs)
     # Return the result as JSON
